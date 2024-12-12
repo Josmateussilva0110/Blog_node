@@ -1,8 +1,8 @@
 const express = require("express")
 const router = express.Router()
 
-router.get("/categories", (request, response) => {
-    response.send("rota de categorias.")
+router.get("/admin/categories/new", (request, response) => {
+    response.render("admin/categories/new")
 })
 
 module.exports = router
