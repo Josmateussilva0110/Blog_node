@@ -65,6 +65,8 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+
+
 table {
   width: 100%; 
   border-collapse: collapse; 
@@ -103,11 +105,93 @@ table tr:hover {
 h1 {
   font-size: 1.5rem; 
   color: #333; 
-  margin-bottom: 0.5rem; 
+  margin-bottom: 0.8rem; 
 }
 
 hr {
   border: 0;
   border-top: 1px solid #ddd; 
   margin: 1rem 0; 
+  padding-top: 0.7rem;
+}
+
+.container-menu {
+  background-color: #bbb5b5; /* Cor de fundo */
+  display: flex; /* Ativa o Flexbox */
+  justify-content: flex-end; /* Alinha os itens à direita */
+  align-items: center; /* Alinha os itens verticalmente */
+  padding: 10px; /* Espaçamento interno */
+}
+
+.container-menu ul {
+  display: flex; /* Aplica flexbox à lista */
+  list-style: none; /* Remove os marcadores padrão da lista */
+  margin: 0; /* Remove margem padrão */
+  padding: 0; /* Remove padding padrão */
+}
+
+.container-menu ul li {
+  margin-right: 15px; /* Espaçamento entre os itens */
+}
+
+.container-menu ul li:last-child {
+  margin-right: 0; /* Remove margem do último item */
+}
+
+.container-menu ul li a {
+  text-decoration: none; /* Remove sublinhado dos links */
+  color: #000; /* Cor dos links */
+  padding: 1.1rem;
+}
+
+.botoes-tabela {
+  text-align: center;
+}
+
+.botoes-tabela button {
+  margin-left: 1.1rem;
+}
+
+.btn {
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.btn-yellow {
+  background-color: rgb(226, 226, 20); 
+  color: white; 
+  border: none; 
+  cursor: pointer; 
+  color: #000;
+}
+
+.btn-yellow:hover {
+  background-color: rgb(187, 187, 31); 
+}
+
+.btn-red {
+  background-color: rgb(229, 22, 22); 
+  color: white; 
+  border: none; 
+  cursor: pointer; 
+  color: #000;
+}
+
+.btn-red:hover {
+  background-color: rgb(198, 30, 30); 
+}
+
+.btn-green {
+  background-color: rgba(59, 210, 17, 0.673); 
+  color: white; 
+  border: none; 
+  cursor: pointer; 
+  color: #000;
+  text-decoration: none;
+}
+
+
+.btn-green:hover {
+  background-color: rgba(62, 183, 28, 0.673); 
 }

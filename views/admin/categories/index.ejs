@@ -1,3 +1,5 @@
+<%- include('../../partials/navbar') %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +9,10 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
+
     <div class="table-container">
         <h1>Lista de categorias</h1>
+        <a class="btn btn-green" href="/admin/categories/new">Nova Categoria</a>
         <hr>
         <table>
             <thead>
@@ -26,10 +30,15 @@
                         <th><%= category.id %></th>
                         <th><%= category.title %></th>
                         <th><%= category.slug %></th>
-                        <th></th>
+                        <th>
+                            <div class="botoes-tabela">
+                                <button class="btn btn-yellow">Editar</button>
+                                <button class="btn btn-red">Deletar</button>
+                            </div>
+                        </th>
                     </tr>
                 <% }) %>
-                
+
             </tbody>
         </table>
     </div>

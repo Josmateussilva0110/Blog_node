@@ -5,11 +5,14 @@ const categories_controller = require("./categories/categories_controller")
 const articles_controller = require("./articles/articles_controller")
 const article = require("./articles/Article")
 const category = require("./categories/Category")
+const path = require('path');
 
 const app = express()
 
-app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 app.use(express.static('public'))
+
 
 app.use(body_parser.urlencoded({extended: false}))
 app.use(body_parser.json())
