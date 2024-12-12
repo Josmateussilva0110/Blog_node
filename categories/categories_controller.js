@@ -9,8 +9,10 @@ router.get("/admin/categories/new", (request, response) => {
 
 router.post("/categories/save", (request, response) => {
     var title = request.body.title
-    if(title != undefined) {
-        Category.create({
+    if(title != undefined) 
+    {
+        Category.create(
+        {
             title: title,
             slug: slugify(title)
         }).then(() => {
@@ -19,6 +21,10 @@ router.post("/categories/save", (request, response) => {
     }   
     else
         response.redirect("/admin/categories/new")
+})
+
+router.get("/admin/categories", (request, response) => {
+    response.render("admin/categories/index")
 })
 
 module.exports = router
