@@ -24,7 +24,10 @@ router.post("/categories/save", (request, response) => {
 })
 
 router.get("/admin/categories", (request, response) => {
-    response.render("admin/categories/index")
+    Category.findAll().then(categories => {
+        response.render("admin/categories/index", {categories: categories})
+    })
+
 })
 
 module.exports = router
