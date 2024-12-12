@@ -10,8 +10,8 @@
     <div class="form-container">
         <h1>Cadastro de categoria</h1>
         <hr>
-        <form>
-            <input type="text" placeholder="Defina o título da categoria" />
+        <form method="post" action="/categories/save">
+            <input type="text" name="title" placeholder="Defina o título da categoria" />
             <button type="submit">Cadastrar</button>
         </form>
     </div>
