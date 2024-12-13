@@ -32,7 +32,7 @@
                             <th><%= category.slug %></th>
                             <th>
                                 <div class="botoes-tabela">
-                                    <button class="btn btn-yellow">Editar</button>
+                                    <a class="btn btn-yellow" href="/admin/categories/edit/<%= category.id %>" >Editar</a>
                                     <form method="post" action="/categories/delete" style="display: inline;" onsubmit="confirmar_delecao(event, this)">
                                         <input type="hidden" name="id" value="<%= category.id %>">
                                         <button class="btn btn-red">Deletar</button>

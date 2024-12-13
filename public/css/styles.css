@@ -161,6 +161,12 @@ hr {
   margin-left: 1.1rem;
 }
 
+.botoes-tabela a {
+  text-decoration: none;
+  font-weight: normal;
+}
+
+
 .btn {
   padding: 0.6rem;
   border-radius: 0.5rem;
@@ -174,6 +180,7 @@ hr {
   cursor: pointer; 
   color: #000;
 }
+
 
 .btn-yellow:hover {
   background-color: rgb(187, 187, 31); 

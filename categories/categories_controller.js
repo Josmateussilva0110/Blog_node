@@ -16,7 +16,7 @@ router.post("/categories/save", (request, response) => {
             title: title,
             slug: slugify(title)
         }).then(() => {
-            response.redirect("/")
+            response.redirect("/admin/categories")
         })
     }   
     else
@@ -48,5 +48,37 @@ router.post("/categories/delete", (request, response) => {
     }
     else response.redirect("/admin/categories")
 })
+
+router.get("/admin/categories/edit/:id", (request, response) => {
+    var id = request.params.id
+    if(isNaN(id)) response.redirect("/admin/categories")
+
+    Category.findByPk(id).then(category => {
+        if(category != undefined)
+        {
+            response.render("admin/categories/edit", {category: category})
+        }
+        else response.redirect("/admin/categories")
+    }).catch(erro => {
+        response.redirect("/admin/categories")
+    })
+})
+
+
+router.post("/admin/categories/update", (request, response) => {
+    var id = request.body.id
+    var title = request.body.title
+    Category.update({title: title, slug: slugify(title)}, {
+        where: {
+            id: id
+        }
+    }).then(() => {
+        response.redirect("/admin/categories")
+    })
+})
+
+
+
+
 
 module.exports = router
