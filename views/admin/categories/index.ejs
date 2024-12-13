@@ -14,33 +14,49 @@
         <h1>Lista de categorias</h1>
         <a class="btn btn-green" href="/admin/categories/new">Nova Categoria</a>
         <hr>
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Título</th>
-                    <th>Slug</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                <% categories.forEach(category => { %>
+        <div class="table-scroll">
+            <table>
+                <thead>
                     <tr>
-                        <th><%= category.id %></th>
-                        <th><%= category.title %></th>
-                        <th><%= category.slug %></th>
-                        <th>
-                            <div class="botoes-tabela">
-                                <button class="btn btn-yellow">Editar</button>
-                                <button class="btn btn-red">Deletar</button>
-                            </div>
-                        </th>
+                        <th>Id</th>
+                        <th>Título</th>
+                        <th>Slug</th>
+                        <th>Ações</th>
                     </tr>
-                <% }) %>
-
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <% categories.forEach(category => { %>
+                        <tr>
+                            <th><%= category.id %></th>
+                            <th><%= category.title %></th>
+                            <th><%= category.slug %></th>
+                            <th>
+                                <div class="botoes-tabela">
+                                    <button class="btn btn-yellow">Editar</button>
+                                    <form method="post" action="/categories/delete" style="display: inline;" onsubmit="confirmar_delecao(event, this)">
+                                        <input type="hidden" name="id" value="<%= category.id %>">
+                                        <button class="btn btn-red">Deletar</button>
+                                    </form>
+                                </div>
+                            </th>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
     </div>
+    
 </body>
 </html>
+
+<%- include('../../partials/footer') %>
+
+
+<script>
+    function confirmar_delecao(event, form) {
+        event.preventDefault()
+        // console.log("o formulário não foi enviado")
+        var decision = confirm("deseja deleta ?")
+        if(decision) form.submit()
+    }
+</script>
