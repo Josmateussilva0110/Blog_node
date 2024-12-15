@@ -57,6 +57,12 @@
   background-color: #218838; 
 }
 
+.form-container textarea {
+  width: 40.7rem;
+  height: 15rem;
+  margin-bottom: 1rem;
+}
+
 
 .table-container {
   background-color: #f8f9fa; 
