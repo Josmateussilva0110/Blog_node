@@ -17,6 +17,7 @@ app.use(express.static('public'))
 app.use(body_parser.urlencoded({extended: false}))
 app.use(body_parser.json())
 
+
 connection.authenticate().then(() => {
     console.log('conexão feita com sucesso.')
 }).catch((err) => {
