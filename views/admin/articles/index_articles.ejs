@@ -1,0 +1,64 @@
+<%- include('../../partials/navbar') %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+    <div class="table-container">
+        <h1>Lista de artigos</h1>
+        <a class="btn btn-green" href="/admin/articles/new">Novo artigo</a>
+        <hr>
+        <div class="table-scroll">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Título</th>
+                        <th>Slug</th>
+                        <th>Categoria</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% articles.forEach(articles =>  { %>
+                        <tr>
+                            <th><%= articles.id %></th>
+                            <th><%= articles.title %></th>
+                            <th><%= articles.slug %></th>
+                            <th><%= articles.category.title %></th>
+                            <th>
+                                <div class="botoes-tabela">
+                                    <a class="btn btn-yellow" href="/admin/categories/edit/<%= articles.id %>" >Editar</a>
+                                    <form method="post" action="/categories/delete" style="display: inline;" onsubmit="confirmar_delecao(event, this)">
+                                        <input type="hidden" name="id" value="<%= articles.id %>">
+                                        <button class="btn btn-red">Deletar</button>
+                                    </form>
+                                </div>
+                            </th>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+<%- include('../../partials/footer') %>
+
+
+<script>
+    function confirmar_delecao(event, form) {
+        event.preventDefault()
+        // console.log("o formulário não foi enviado")
+        var decision = confirm("deseja deleta ?")
+        if(decision) form.submit()
+    }
+</script>
