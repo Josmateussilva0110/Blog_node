@@ -34,8 +34,8 @@
                             <th><%= articles.category.title %></th>
                             <th>
                                 <div class="botoes-tabela">
-                                    <a class="btn btn-yellow" href="/admin/categories/edit/<%= articles.id %>" >Editar</a>
-                                    <form method="post" action="/categories/delete" style="display: inline;" onsubmit="confirmar_delecao(event, this)">
+                                    <a class="btn btn-yellow" href="/admin/articles/edit/<%= articles.id %>" >Editar</a>
+                                    <form method="post" action="/articles/delete" style="display: inline;" onsubmit="confirmar_delecao(event, this)">
                                         <input type="hidden" name="id" value="<%= articles.id %>">
                                         <button class="btn btn-red">Deletar</button>
                                     </form>
