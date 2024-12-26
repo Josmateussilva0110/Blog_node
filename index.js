@@ -29,7 +29,9 @@ app.use("/", categories_controller)
 app.use("/", articles_controller)
 
 app.get("/", (request, response) => {
-    response.render("home")
+    article.findAll().then(articles => {
+        response.render("home", {articles: articles})
+    })
 })
 
 
