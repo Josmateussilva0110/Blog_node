@@ -323,3 +323,18 @@ hr {
 .article-button:hover {
   background-color: #218838;
 }
+
+.title-article h2 {
+  font-size: 2em;
+  margin: 1rem 1rem;
+  color: #333;
+  text-align: center;
+}
+
+.article-body h2 {
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: rgb(31, 30, 30);
+  max-width: 80rem;
+  margin: 0 auto;
+}

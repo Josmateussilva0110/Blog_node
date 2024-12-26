@@ -12,7 +12,7 @@
         <% articles.forEach(article => { %>
             <div class="article-card">
                 <h2 class="article-title"><%= article.title %></h2>
-                <a href="#" class="article-button">Ler artigo</a>
+                <a href="<%= article.slug %>" class="article-button">Ler artigo</a>
             </div>
         <% }) %>
     </div>

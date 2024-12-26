@@ -8,13 +8,12 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <div class="article-container">
-        <% articles.forEach(article => { %>
-            <div class="article-card">
-                <h2 class="article-title"><%= article.title %></h2>
-                <a href="#" class="article-button">Ler artigo</a>
-            </div>
-        <% }) %>
+    <div class="title-article">
+        <h2><%= article.title %></h2>
+    </div>
+
+    <div class="article-body">
+        <h2><%- article.body %></h2>
     </div>
 </body>
 </html>

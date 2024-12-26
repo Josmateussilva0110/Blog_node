@@ -1,6 +1,10 @@
 <nav>
     <div class="container-menu">
       <ul>
+        <% categories.forEach(category => { %>
+            <li><a href="#"><%= category.title %></a></li>
+        <% })  %>
+
         <li><a href="/">Início</a></li>
       </ul>
     </div>

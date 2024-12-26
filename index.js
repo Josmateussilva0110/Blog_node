@@ -29,8 +29,15 @@ app.use("/", categories_controller)
 app.use("/", articles_controller)
 
 app.get("/", (request, response) => {
-    article.findAll().then(articles => {
-        response.render("home", {articles: articles})
+    article.findAll({
+        order: [
+            ['id', 'DESC']
+        ],
+    }).then(articles => {
+        category.findAll().then(categories => {
+            response.render("home", {articles: articles, categories: categories})
+        })
+        
     })
 })
 
@@ -42,7 +49,9 @@ app.get("/:slug", (request, response) => {
         }
     }).then( article => {
         if(article != undefined) {
-            response.render("article", {article: article})  
+            category.findAll().then(categories => {
+                response.render("article", {article: article, categories: categories})
+            })  
         }
         else response.redirect("/")
     }).catch( err => {
