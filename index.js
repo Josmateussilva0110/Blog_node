@@ -34,6 +34,23 @@ app.get("/", (request, response) => {
     })
 })
 
+app.get("/:slug", (request, response) => {
+    var slug = request.params.slug
+    article.findOne({
+        where: {
+            slug: slug
+        }
+    }).then( article => {
+        if(article != undefined) {
+            response.render("article", {article: article})  
+        }
+        else response.redirect("/")
+    }).catch( err => {
+        response.redirect("/")
+    })
+})
+
+
 
 app.listen(8080, () => {
     console.log("App rodando.")
