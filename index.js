@@ -5,12 +5,12 @@ const categories_controller = require("./categories/categories_controller")
 const articles_controller = require("./articles/articles_controller")
 const article = require("./articles/Article")
 const category = require("./categories/Category")
-const path = require('path');
+const path = require('path')
 
 const app = express()
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
 
@@ -58,6 +58,25 @@ app.get("/:slug", (request, response) => {
         response.redirect("/")
     })
 })
+
+app.get("/category/:slug", (request, response) => {
+    const slug = request.params.slug
+
+    category.findOne({
+        where: { slug: slug },
+        include: [{ model: article }]
+    }).then(foundCategory => {
+        if (foundCategory) {
+            category.findAll().then(categories => {
+                response.render("home", { articles: foundCategory.articles, categories: categories })
+            })
+        }
+        else response.redirect("/")
+    }).catch(err => {
+        response.redirect("/")
+    })
+})
+
 
 
 
