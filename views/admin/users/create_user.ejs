@@ -1,0 +1,27 @@
+<%- include('../../partials/navbar') %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Criar Conta</h1>
+        <hr>
+        <form method="post" action="/users/save">
+            <input type="text" name="username" placeholder="Nome de Usuário" / required>
+            <input type="email" name="email" placeholder="Email" / required>
+            <input type="password" name="password" placeholder="Senha" / required>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+      
+</body>
+</html>
+
+
+<%- include('../../partials/footer') %>

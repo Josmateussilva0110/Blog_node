@@ -3,6 +3,7 @@ const body_parser = require("body-parser")
 const connection = require("./database/database_connection")
 const categories_controller = require("./categories/categories_controller")
 const articles_controller = require("./articles/articles_controller")
+const users_controller = require("./users/users_controller")
 const article = require("./articles/Article")
 const category = require("./categories/Category")
 const path = require('path')
@@ -27,6 +28,7 @@ connection.authenticate().then(() => {
 
 app.use("/", categories_controller)
 app.use("/", articles_controller)
+app.use("/", users_controller)
 
 app.get("/", (request, response) => {
     article.findAll({

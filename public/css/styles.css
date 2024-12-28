@@ -44,6 +44,16 @@
   margin-bottom: 1rem; 
 }
 
+.form-container input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc; 
+  border-radius: 0.25rem; 
+  margin-top: 0.7rem;
+  margin-bottom: 1rem; 
+}
+
 .form-container button {
   background-color: #28a745; 
   color: white; 
