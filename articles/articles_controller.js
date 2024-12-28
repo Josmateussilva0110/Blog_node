@@ -26,7 +26,7 @@ router.post("/article/save", (request, response) => {
     console.log(request.body.category)
     var title = request.body.title
     var body = request.body.body
-    var categoryId = request.body.category;
+    var categoryId = request.body.category
     Article.create({
         title: title,
         slug: slugify(title),
@@ -58,8 +58,8 @@ router.post("/articles/delete", (request, response) => {
 
 
 router.get("/admin/articles/edit/:id", (request, response) => {
-    var id = request.params.id;
-    if (isNaN(id)) return response.redirect("/admin/articles");
+    var id = request.params.id
+    if (isNaN(id)) return response.redirect("/admin/articles")
 
     Article.findByPk(id).then(article => {
         if (article) {
@@ -70,10 +70,10 @@ router.get("/admin/articles/edit/:id", (request, response) => {
                 })
             })
         } else {
-            response.redirect("/admin/articles");
+            response.redirect("/admin/articles")
         }
     }).catch(error => {
-        response.redirect("/admin/articles");
+        response.redirect("/admin/articles")
     })
 })
 
@@ -83,7 +83,7 @@ router.post("/admin/article/update", (request, response) => {
     var id = request.body.id
     var title = request.body.title
     var body = request.body.body
-    var categoryId = request.body.category;
+    var categoryId = request.body.category
     Article.update({title: title, slug: slugify(title), body: body, categoryId: categoryId}, {
         where: {
             id: id
@@ -94,26 +94,32 @@ router.post("/admin/article/update", (request, response) => {
 })
 
 router.get("/articles/page/:num", (request, response) => {
-    var page = request.params.num
+    var page = parseInt(request.params.num) 
+    var limit = 6
     var offset = 0
-    if(isNaN(page) || page == 1) {offset = 0}
-    else {offset = parseInt(page) * 6}
+
+    if (!isNaN(page) && page > 1) {
+        offset = (page - 1) * limit 
+    }
 
     Article.findAndCountAll({
-        limit: 6,
-        offset: offset
+        limit: limit,
+        offset: offset,
+        order: [['id', 'DESC']],
     }).then(articles => {
-        var next 
-        if(offset + 6 >= articles.count) next = false
-        else next = true
+        var next = offset + limit < articles.count
 
         var result = {
+            page: page,
             next: next,
             articles: articles
         }
+
         Category.findAll().then(categories => {
-            response.render("admin/articles/page", {result: result, categories: categories})
+            response.render("admin/articles/page", { result: result, categories: categories })
         })
+    }).catch(err => {
+        response.redirect("/") 
     })
 })
 

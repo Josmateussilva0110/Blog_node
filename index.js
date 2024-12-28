@@ -33,6 +33,7 @@ app.get("/", (request, response) => {
         order: [
             ['id', 'DESC']
         ],
+        limit: 6
     }).then(articles => {
         category.findAll().then(categories => {
             response.render("home", {articles: articles, categories: categories})

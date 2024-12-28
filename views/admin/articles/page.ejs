@@ -16,6 +16,19 @@
             </div>
         <% }) %>
     </div>
+    <div class="pagination">
+
+        <% if(result.page > 2) { %>
+            <a href="/articles/page/<%= result.page -1 %>" class="pagination-button-prox"> < anterior</a>
+        <% } else if(result.page == 2) { %>
+            <a href="/" class="pagination-button-prox"> < anterior</a>
+        <% }%>
+
+        <% if(result.next) { %>
+            <a href="/articles/page/<%= result.page +1 %>" class="pagination-button-prox">Proximo ></a>
+        <% }%>
+
+    </div>
 </body>
 </html>
 
