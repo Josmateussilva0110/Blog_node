@@ -18,7 +18,11 @@
             <div class="">
                 <select name="category">
                     <% categories.forEach((category) => { %>
-                        <option value="<%= category.id %>"><%= category.title %></option>
+                        <% if(category.id == article.categoryId) { %>
+                            <option value="<%= category.id %>" selected><%= category.title %></option>
+                        <% } else { %> 
+                            <option value="<%= category.id %>"><%= category.title %></option>
+                        <% } %>
                     <% }) %>
                 </select>
             </div>

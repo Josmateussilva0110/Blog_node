@@ -93,5 +93,29 @@ router.post("/admin/article/update", (request, response) => {
     })
 })
 
+router.get("/articles/page/:num", (request, response) => {
+    var page = request.params.num
+    var offset = 0
+    if(isNaN(page) || page == 1) {offset = 0}
+    else {offset = parseInt(page) * 6}
+
+    Article.findAndCountAll({
+        limit: 6,
+        offset: offset
+    }).then(articles => {
+        var next 
+        if(offset + 6 >= articles.count) next = false
+        else next = true
+
+        var result = {
+            next: next,
+            articles: articles
+        }
+        Category.findAll().then(categories => {
+            response.render("admin/articles/page", {result: result, categories: categories})
+        })
+    })
+})
+
 
 module.exports = router

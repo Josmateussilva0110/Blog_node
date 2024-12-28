@@ -1,4 +1,4 @@
-<%- include('partials/navbar_home') %>
+<%- include('../../partials/navbar_home') %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="article-container">
-        <% articles.forEach(article => { %>
+        <% result.articles.rows.forEach(article => { %>
             <div class="article-card">
                 <h2 class="article-title"><%= article.title %></h2>
                 <a href="<%= article.slug %>" class="article-button">Ler artigo</a>
@@ -19,4 +19,4 @@
 </body>
 </html>
 
-<%- include('partials/footer') %>
+<%- include('../../partials/footer') %>
