@@ -51,5 +51,34 @@ router.post("/users/save", (request, response) => {
 })
 
 
+router.get("/login", (request, response) => {
+    response.render("admin/users/login_user")
+})
+
+router.post("/authenticate", (request, response) => {
+    var username = request.body.username
+    var password = request.body.password
+    User.findOne({
+        where: {
+            username: username
+        }
+    }).then(user => {
+        if(user != undefined)
+        {
+            var correct_password = bcrypt.compareSync(password, user.password)
+            if(correct_password)
+            {
+                request.session.user = {
+                    id: user.id,
+                    username: user.username
+                }
+                response.json(request.session.user)
+            }
+            else response.redirect("/login")
+        }
+        else response.redirect("/login")
+    })
+})
+
 
 module.exports = router 

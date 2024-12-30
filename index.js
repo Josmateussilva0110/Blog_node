@@ -1,5 +1,6 @@
 const express = require("express")
 const body_parser = require("body-parser")
+const session = require("express-session")
 const connection = require("./database/database_connection")
 const categories_controller = require("./categories/categories_controller")
 const articles_controller = require("./articles/articles_controller")
@@ -7,12 +8,18 @@ const users_controller = require("./users/users_controller")
 const article = require("./articles/Article")
 const category = require("./categories/Category")
 const path = require('path')
+const { request } = require("http")
 
 const app = express()
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
+
+app.use(session({
+    secret: "kaskajhjhjdhfurhufhjdnb",
+    cookie: {maxAge: 20000}
+}))
 
 
 app.use(body_parser.urlencoded({extended: false}))
