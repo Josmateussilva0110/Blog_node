@@ -72,12 +72,17 @@ router.post("/authenticate", (request, response) => {
                     id: user.id,
                     username: user.username
                 }
-                response.json(request.session.user)
+                response.redirect("/admin/articles")
             }
             else response.redirect("/login")
         }
         else response.redirect("/login")
     })
+})
+
+router.get("/logout", (request, response) => {
+    request.session.user = undefined
+    response.redirect("/")
 })
 
 

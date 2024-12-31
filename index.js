@@ -18,7 +18,7 @@ app.use(express.static('public'))
 
 app.use(session({
     secret: "kaskajhjhjdhfurhufhjdnb",
-    cookie: {maxAge: 20000}
+    cookie: {maxAge: 7200000} // expira em 2 horas
 }))
 
 
